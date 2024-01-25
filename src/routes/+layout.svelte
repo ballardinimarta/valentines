@@ -1,0 +1,25 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap"
+  rel="stylesheet"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap"
+  rel="stylesheet"
+/>
+<slot />
+
+<style>
+  :global(body) {
+    --handwriting-font: "Reenie Beanie", cursive;
+    --main-font: "Source Code Pro", monospace;
+    --dark-burgundy: rgb(76, 4, 23);
+    --bg-color: rgb(251, 206, 213);
+    background-color: var(--bg-color);
+    color: var(--dark-burgundy);
+    font-family: var(--main-font);
+  }
+</style>

@@ -3,7 +3,7 @@
   import { addDoc, collection } from "firebase/firestore";
 
   let text = "";
-  let names = ["moa", "märta", "jessica"];
+  let names = ["moa", "märta", "jessica", "märt"];
   let name = "";
 
   let stage = 0;

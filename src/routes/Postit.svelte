@@ -1,14 +1,18 @@
 <script lang="ts">
   export let name: string;
   export let text: string;
-  console.log(window.screen.height);
+  export let rotation: string;
+  export let color: string;
+  export let x: string;
+  export let y: string;
+
   const rand = (min: number, max: number) =>
     Math.floor(Math.random() * (max - min)) + min;
   const style = `
-    --rotation: -${rand(0, 15)}deg;
-    --color: rgb(250, ${rand(100, 200)},${rand(150, 255)} );
-    --x: ${rand(300, window.screen.width - 300)}px;
-    --y: ${rand(250, window.screen.height - 250)}px;
+    --rotation: ${rotation}deg;
+    --color: ${color};
+    --x: ${x}%;
+    --y: ${y}%;
 
   `;
 </script>

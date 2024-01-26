@@ -9,20 +9,13 @@
   };
 
   let promise = getQuerySnapshot();
-  const randomIntFromInterval = (min: number, max: number) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
 </script>
 
 <h1><Logo /> Alster Lovebombing <Logo /></h1>
 <div class="postit-board">
   {#await promise then guerySnapshot}
     {#each guerySnapshot.docs as doc}
-      <Postit
-        name={doc.data().name}
-        text={doc.data().text}
-        tilt={randomIntFromInterval(-25, 25)}
-      />
+      <Postit name={doc.data().name} text={doc.data().text} />
     {/each}
   {/await}
 </div>

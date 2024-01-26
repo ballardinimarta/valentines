@@ -1,14 +1,14 @@
 <script lang="ts">
-  export let name;
-  export let text;
-  export let tilt = 0;
+  export let name: string;
+  export let text: string;
   console.log(window.screen.height);
-  const rand = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+  const rand = (min: number, max: number) =>
+    Math.floor(Math.random() * (max - min)) + min;
   const style = `
     --rotation: -${rand(0, 15)}deg;
     --color: rgb(250, ${rand(100, 200)},${rand(150, 255)} );
-    --x: ${rand(100, window.screen.width - 100)}px;
-    --y: ${rand(150, window.screen.height - 250)}px;
+    --x: ${rand(300, window.screen.width - 300)}px;
+    --y: ${rand(250, window.screen.height - 250)}px;
 
   `;
 </script>

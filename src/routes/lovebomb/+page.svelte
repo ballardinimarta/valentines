@@ -82,6 +82,7 @@
       await addDoc(collection(db, "notes"), {
         name,
         text,
+        time: new Date().getTime(),
       });
     } catch {
       console.log("error");
@@ -242,7 +243,8 @@
     font-size: 1rem;
     text-align: center;
   }
-  button[type="submit"], .thanks button {
+  button[type="submit"],
+  .thanks button {
     width: calc(100% + 4px);
     height: 50px;
     border: none;

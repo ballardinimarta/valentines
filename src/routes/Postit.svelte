@@ -18,7 +18,7 @@
   `;
 </script>
 
-<div class="postit-wrap">
+<div class="postit-wrap" {style}>
   <div class="postit" {style}>
     <h3>{name}</h3>
     <p>{text}</p>
@@ -28,6 +28,9 @@
 <style>
   .postit-wrap {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
   }
   .postit {
     padding: 1rem;
@@ -37,11 +40,7 @@
     height: 150px;
     margin: 5px;
     text-align: center;
-    /* box-shadow: 3px 2px 1px #0000004d; */
     transform: rotate(var(--rotation));
-    position: absolute;
-    top: var(--y);
-    left: var(--x);
     aspect-ratio: 1;
     border-image: radial-gradient(var(--color) 69%, #0000 70%) 84.5%/50%;
     clip-path: polygon(-41% 0, 50% 91%, 141% 0);

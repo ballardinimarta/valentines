@@ -18,7 +18,7 @@
     --dark-burgundy: rgb(76, 4, 23);
     --bg-color: rgb(251, 206, 213);
     background-color: var(--bg-color);
-
+    margin: 0;
     color: var(--dark-burgundy);
     font-family: var(--main-font);
   }

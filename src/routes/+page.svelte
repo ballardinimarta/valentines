@@ -89,15 +89,11 @@
 </script>
 
 <main>
-  <!-- <h1><Logo /> Alster Lovebombing <Logo /></h1> -->
-  <button
-    on:click={() => {
-      notes.forEach((document) => {
-        const NoteRef = doc(db, "notes", document.id);
-        deleteDoc(NoteRef);
-      });
-    }}>rensa</button
-  >
+  <div>
+    <h1><Logo /> Alster Lovebombing <Logo /></h1>
+  </div>
+  <img src="/qr.png" alt="qrcode" />
+
   <div class="postit-board" id="postit-board">
     {#each notes as note, index}
       {#if note.x && note.y && note.rotation && note.color}
@@ -113,17 +109,24 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 100vh;
   }
   h1 {
     font-size: 3rem;
     text-align: center;
   }
+  img {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    bottom: 0;
+
+    right: 0;
+  }
   .postit-board {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    height: 100vh;
-    width: 100%;
+    height: 90vh;
   }
 </style>

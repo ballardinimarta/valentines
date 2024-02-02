@@ -143,7 +143,7 @@
     color: white;
     background-color: transparent;
     border: none;
-    background-image: url("heart.png");
+    background-image: url("/heart.png");
     background-size: contain;
     background-repeat: no-repeat;
     height: 70vw;

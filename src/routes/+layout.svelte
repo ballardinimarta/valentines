@@ -15,7 +15,7 @@
   :global(body) {
     --handwriting-font: "Pangolin", cursive;
     --main-font: "Source Code Pro", monospace;
-    --dark-burgundy: rgb(76, 4, 23);
+    --dark-burgundy: #4c0417;
     --bg-color: rgb(251, 206, 213);
     background-color: var(--bg-color);
     margin: 0;

@@ -21,5 +21,6 @@
     margin: 0;
     color: var(--dark-burgundy);
     font-family: var(--main-font);
+    background-image: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
   }
 </style>

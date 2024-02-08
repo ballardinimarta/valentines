@@ -117,7 +117,7 @@
       </div>
       <form on:submit={handleOnSubmit}>
         <label>Skriv nåt du uppskattar med {name}</label>
-        <input type="text" bind:value={text} />
+        <input autofocus type="text" bind:value={text} />
         <button type="submit">Skicka</button>
       </form>
     </div>

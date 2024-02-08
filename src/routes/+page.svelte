@@ -25,46 +25,53 @@
   let notes: Note[] = [];
 
   // Set up a listener for real-time updates
-  const rand = (min: number, max: number) =>
-    Math.floor(Math.random() * (max - min)) + min;
+  function randomInteger(min: number, max: number) {
+    console.log(max, min);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
   onMount(() => {
-    const width = document.getElementById("postit-board")?.offsetWidth ?? 1440;
-    const height = document.getElementById("postit-board")?.offsetHeight ?? 900;
-    console.log(width, height);
+    const width =
+      (document.getElementById("postit-board")?.offsetWidth ?? 1440) - 200;
+    const height =
+      (document.getElementById("postit-board")?.offsetHeight ?? 900) - 200;
+
     const unsub = onSnapshot(
       collection(db, "notes"),
       { includeMetadataChanges: true },
       (col) => {
         const documents = col.docs.map((document) => {
           const NoteRef = doc(db, "notes", document.id);
-          console.log(window.screen.width, window.screen.height);
-          let rotation = `-${rand(0, 15)}`;
-          let color = `rgb(250, ${rand(100, 200)},${rand(150, 255)} )`;
+          const rand = Boolean(Math.round(Math.random()));
+          let rotation = `${rand ? "-" : ""}${randomInteger(0, 15)}`;
+          let color = `rgb(250, ${randomInteger(100, 200)},${randomInteger(
+            150,
+            255
+          )} )`;
+          console.log(width, height);
 
-          let x = `${rand(100, width - 100)}`;
-          let y = `${rand(100, height - 100)}`;
-
+          let x = `${randomInteger(200, width)}`;
+          let y = `${randomInteger(200, height)}`;
           if (!document.data().color) {
-            console.log("color");
             updateDoc(NoteRef, {
               color: color,
             });
           }
 
-          if (!document.data().rotation) {
-            console.log("rotation");
+          if (
+            document.data().rotation === undefined ||
+            document.data().rotation === null
+          ) {
             updateDoc(NoteRef, { rotation: rotation });
           }
-          if (!document.data().x) {
-            console.log("x");
+          if (document.data().x === undefined || document.data().x === null) {
+            console.log("x", x, document.data().text);
             updateDoc(NoteRef, { x: x });
           }
-          if (!document.data().y) {
-            console.log("y");
+          if (document.data().y === undefined || document.data().y === null) {
+            console.log("y", y, document.data().text);
             updateDoc(NoteRef, { y: y });
           }
 
-          console.log(x, y);
           return {
             id: document.id,
             name: document.data().name,
@@ -79,7 +86,6 @@
         notes = [...documents].sort((a, b) => {
           return parseInt(a.time) - parseInt(b.time);
         });
-        console.log(notes.map((note) => note.time));
       }
     );
     return () => {
@@ -128,5 +134,6 @@
     flex-wrap: wrap;
     justify-content: center;
     height: 90vh;
+    width: 100%;
   }
 </style>

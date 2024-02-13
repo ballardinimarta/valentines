@@ -1,11 +1,5 @@
 <script lang="ts">
-  import {
-    collection,
-    doc,
-    onSnapshot,
-    updateDoc,
-    deleteDoc,
-  } from "firebase/firestore";
+  import { collection, doc, onSnapshot, updateDoc } from "firebase/firestore";
   import Postit from "./Postit.svelte";
   import Logo from "./Logo.svelte";
   import { db } from "$lib/firebase/firebase";
@@ -26,7 +20,6 @@
 
   // Set up a listener for real-time updates
   function randomInteger(min: number, max: number) {
-    console.log(max, min);
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
   onMount(() => {
@@ -47,7 +40,6 @@
             150,
             255
           )} )`;
-          console.log(width, height);
 
           let x = `${randomInteger(200, width)}`;
           let y = `${randomInteger(200, height)}`;
@@ -111,6 +103,7 @@
 
 <style>
   main {
+    background-image: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -41,8 +41,13 @@
     margin: 5px;
     text-align: center;
     transform: rotate(var(--rotation));
+    background-color: var(--color);
     aspect-ratio: 1;
-    border-image: radial-gradient(var(--color) 69%, #0000 70%) 84.5%/50%;
+
+    mask:
+      radial-gradient(at 70% 31%, #000 29%, #0000 30%),
+      radial-gradient(at 30% 31%, #000 29%, #0000 30%),
+      linear-gradient(#000 0 0) bottom/100% 50% no-repeat;
     clip-path: polygon(-41% 0, 50% 91%, 141% 0);
   }
   .postit h3 {

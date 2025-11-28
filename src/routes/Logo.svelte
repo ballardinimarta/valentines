@@ -26,6 +26,7 @@
 <style>
   .logo {
     transform: rotate(180deg);
-    color: #ff312e;
+    color: #fda4ff;
+    filter: drop-shadow(2px 2px 0px #ededed);
   }
 </style>

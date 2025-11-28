@@ -117,7 +117,7 @@
 
 <style>
   main {
-    background-image: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
+    background-image: url("/bg.png");
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,8 +125,10 @@
     height: 100vh;
   }
   h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     text-align: center;
+    color: rgb(249, 249, 249);
+    text-shadow: 2px 2px 0px #fda4ff;
   }
   img {
     width: 150px;

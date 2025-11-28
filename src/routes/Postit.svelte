@@ -49,17 +49,19 @@
       radial-gradient(at 30% 31%, #000 29%, #0000 30%),
       linear-gradient(#000 0 0) bottom/100% 50% no-repeat;
     clip-path: polygon(-41% 0, 50% 91%, 141% 0);
+    color: #7d0032;
   }
   .postit h3 {
-    font-size: 20px;
+    font-size: 24px;
     font-family: var(--main-font);
     text-align: center;
-    margin: 0;
+    margin: 0.5rem 0;
     text-transform: capitalize;
   }
   .postit p {
     font-family: var(--handwriting-font);
     text-align: center;
+    font-size: 20px;
     margin: 0;
   }
 </style>

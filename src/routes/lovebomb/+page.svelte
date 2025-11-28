@@ -144,7 +144,7 @@
 
   .random-name-btn,
   .heart {
-    color: white;
+    color: #fda4ff;
     background-color: transparent;
     border: none;
     background-image: url("/heart.png");
@@ -253,7 +253,7 @@
     height: 50px;
     border: none;
     color: white;
-    background-color: #ff312e;
+    background-color: #fda4ff;
     text-transform: uppercase;
     font-family: var(--main-font);
     font-size: 1rem;

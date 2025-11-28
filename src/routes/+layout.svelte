@@ -1,25 +1,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link
-  href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap"
-  rel="stylesheet"
-/>
-<link rel="preconnect" href="https://fonts.gstatic.com" />
-<link
-  href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Jersey+15&display=swap"
   rel="stylesheet"
 />
 <slot />
 
 <style>
   :global(body) {
-    --handwriting-font: "Pangolin", cursive;
-    --main-font: "Source Code Pro", monospace;
+    --handwriting-font: "Jersey 10", monospace;
+    --main-font: "Jersey 15", monospace;
     --dark-burgundy: #4c0417;
     --bg-color: rgb(251, 206, 213);
-    background-color: var(--bg-color);
+    --pink: #fda4ff;
+    --light-pink: #fdcdfe;
+
+    background-image: url("/bg.png");
     margin: 0;
-    color: var(--dark-burgundy);
+    color: var(--light-pink);
     font-family: var(--main-font);
   }
 </style>

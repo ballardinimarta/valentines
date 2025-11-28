@@ -1,0 +1,16 @@
+:root {
+  --handwriting-font: "Jersey 10", monospace;
+  --main-font: "Jersey 15", monospace;
+  --dark-burgundy: #4c0417;
+  --bg-color: rgb(251, 206, 213);
+  --pink: #fda4ff;
+  --light-pink: #fdcdfe;
+}
+
+body {
+  background-image: url("/bg.png");
+  margin: 0;
+  color: var(--light-pink);
+  font-family: var(--main-font);
+}
+

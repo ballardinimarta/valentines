@@ -1,0 +1,35 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+.h1 {
+  font-size: 4rem;
+  text-align: center;
+  color: rgb(249, 249, 249);
+  text-shadow: 2px 2px 0px #fda4ff;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.qr {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.postitBoard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 90vh;
+  width: 100%;
+}
+

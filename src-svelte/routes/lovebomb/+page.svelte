@@ -49,9 +49,9 @@
   ];
   const names = emails.map((email) => {
     const name = email.split("@")[0];
-    const firstName = name.split(".")[0];
-    const lastName = name.split(".")[1];
-    return `${firstName} ${lastName.charAt(0).toUpperCase()}`;
+    const firstName = name.split(".")[0].replace(/^\w/, (c) => c.toUpperCase());
+    const lastName = name.split(".")[1].replace(/^\w/, (c) => c.toUpperCase());
+    return `${firstName} ${lastName.charAt(0)}`;
   });
 
   let shuffledNames: string[] = [];
@@ -106,13 +106,14 @@
     <span class="btn-text">Slumpa fram namn</span>
   {:else if stage === 1}
     <div class="wrapper">
-      <div class="heart"></div>
-      <ul class="list-spinner">
-        {#each shuffledNames as n}
-          <li>{n}</li>
-        {/each}
-      </ul>
-      <span class="chosen-name">{name}</span>
+      <div class="heart">
+        <ul class="list-spinner">
+          {#each shuffledNames as n}
+            <li>{n}</li>
+          {/each}
+        </ul>
+        <span class="chosen-name">{name}</span>
+      </div>
     </div>
   {:else if stage === 2}
     <div class="wrapper">
@@ -147,7 +148,7 @@
     color: #fda4ff;
     background-color: transparent;
     border: none;
-    background-image: url("/heart.png");
+    background-image: url("/heart.svg");
     background-size: contain;
     background-repeat: no-repeat;
     height: 70vw;
@@ -155,6 +156,15 @@
     max-height: 500px;
     max-width: 500px;
     animation: beatingHeart 1s infinite;
+    mask-image: url("/heart.svg");
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: url("/heart.svg");
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    position: relative;
   }
 
   .heart.stage-2 {
@@ -178,22 +188,27 @@
 
   .list-spinner {
     height: 100%;
+    width: 100%;
     overflow: hidden;
     position: absolute;
     list-style-type: none;
     padding-left: 0;
+    padding-top: 1.7vw; /* Align index 2 with chosenName */
     font-size: 8vw;
     text-align: center;
-    color: var(--bg-color);
+    color: #fcddff;
     /* color: white; */
     text-transform: uppercase;
-    top: 6.5vw;
+    top: 0;
     left: 0;
     right: 0;
     margin: 0 auto;
+    white-space: nowrap;
   }
 
   li {
+    height: 10vw;
+    line-height: 10vw;
     animation: spinLi 2s;
     opacity: 0;
     transition-timing-function: cubic-bezier(0, 1.15, 0, 0.9);

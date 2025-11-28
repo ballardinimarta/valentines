@@ -2,8 +2,9 @@
   import { collection, doc, onSnapshot, updateDoc } from "firebase/firestore";
   import Postit from "./Postit.svelte";
   import Logo from "./Logo.svelte";
-  import { db } from "$lib/firebase/firebase";
+  import { auth, db } from "$lib/firebase/firebase";
   import { onMount } from "svelte";
+  import { onAuthStateChanged } from "firebase/auth";
 
   type Note = {
     name: string;
@@ -28,60 +29,73 @@
     const height =
       (document.getElementById("postit-board")?.offsetHeight ?? 900) - 200;
 
-    const unsub = onSnapshot(
-      collection(db, "notes"),
-      { includeMetadataChanges: true },
-      (col) => {
-        const documents = col.docs.map((document) => {
-          const NoteRef = doc(db, "notes", document.id);
-          const rand = Boolean(Math.round(Math.random()));
-          let rotation = `${rand ? "-" : ""}${randomInteger(0, 15)}`;
-          let color = `rgb(250, ${randomInteger(100, 200)},${randomInteger(
-            150,
-            255
-          )} )`;
+    let unsubSnapshot: () => void;
+    const unsubAuth = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        if (unsubSnapshot) unsubSnapshot();
+        unsubSnapshot = onSnapshot(
+          collection(db, "notes"),
+          { includeMetadataChanges: true },
+          (col) => {
+            const documents = col.docs.map((document) => {
+              const NoteRef = doc(db, "notes", document.id);
+              const rand = Boolean(Math.round(Math.random()));
+              let rotation = `${rand ? "-" : ""}${randomInteger(0, 15)}`;
+              let color = `rgb(250, ${randomInteger(100, 200)},${randomInteger(
+                150,
+                255
+              )} )`;
 
-          let x = `${randomInteger(200, width)}`;
-          let y = `${randomInteger(200, height)}`;
-          if (!document.data().color) {
-            updateDoc(NoteRef, {
-              color: color,
+              let x = `${randomInteger(200, width)}`;
+              let y = `${randomInteger(200, height)}`;
+              if (!document.data().color) {
+                updateDoc(NoteRef, {
+                  color: color,
+                });
+              }
+
+              if (
+                document.data().rotation === undefined ||
+                document.data().rotation === null
+              ) {
+                updateDoc(NoteRef, { rotation: rotation });
+              }
+              if (
+                document.data().x === undefined ||
+                document.data().x === null
+              ) {
+                console.log("x", x, document.data().text);
+                updateDoc(NoteRef, { x: x });
+              }
+              if (
+                document.data().y === undefined ||
+                document.data().y === null
+              ) {
+                console.log("y", y, document.data().text);
+                updateDoc(NoteRef, { y: y });
+              }
+
+              return {
+                id: document.id,
+                name: document.data().name,
+                text: document.data().text,
+                rotation: document.data().rotation,
+                color: document.data().color,
+                x: document.data().x,
+                y: document.data().y,
+                time: document.data().time ?? "0",
+              };
+            });
+            notes = [...documents].sort((a, b) => {
+              return parseInt(a.time) - parseInt(b.time);
             });
           }
-
-          if (
-            document.data().rotation === undefined ||
-            document.data().rotation === null
-          ) {
-            updateDoc(NoteRef, { rotation: rotation });
-          }
-          if (document.data().x === undefined || document.data().x === null) {
-            console.log("x", x, document.data().text);
-            updateDoc(NoteRef, { x: x });
-          }
-          if (document.data().y === undefined || document.data().y === null) {
-            console.log("y", y, document.data().text);
-            updateDoc(NoteRef, { y: y });
-          }
-
-          return {
-            id: document.id,
-            name: document.data().name,
-            text: document.data().text,
-            rotation: document.data().rotation,
-            color: document.data().color,
-            x: document.data().x,
-            y: document.data().y,
-            time: document.data().time ?? "0",
-          };
-        });
-        notes = [...documents].sort((a, b) => {
-          return parseInt(a.time) - parseInt(b.time);
-        });
+        );
       }
-    );
+    });
     return () => {
-      unsub();
+      if (unsubSnapshot) unsubSnapshot();
+      unsubAuth();
     };
   });
 </script>

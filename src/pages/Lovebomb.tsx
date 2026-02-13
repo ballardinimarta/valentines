@@ -140,7 +140,9 @@ const Lovebomb: React.FC = () => {
             </span>
           </div>
           <form onSubmit={handleOnSubmit} className={styles.form}>
-            <label>Skriv nåt du uppskattar med {name}</label>
+            <label className={styles.inputLabel}>
+              Skriv nåt du uppskattar med {name}
+            </label>
             <input
               autoFocus
               type="text"

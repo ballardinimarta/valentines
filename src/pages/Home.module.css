@@ -26,10 +26,7 @@
 }
 
 .postitBoard {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  position: relative;
   height: 90vh;
   width: 100%;
 }
-

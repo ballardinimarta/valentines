@@ -151,26 +151,56 @@
   margin-top: -40px;
 }
 
+.inputLabel {
+  background-color: #fda4ff;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+}
+
 @keyframes beatingHeart {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes spinLi {
-  0% { transform: translateY(-200vh); opacity: 1; }
-  95% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; }
+  0% {
+    transform: translateY(-200vh);
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes showChosen {
-  0% { opacity: 0; }
-  90% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes moveHeart {
-  from { transform: scale(1); }
-  to { transform: scale(0.8) translateY(-250px); }
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.8) translateY(-250px);
+  }
 }
-

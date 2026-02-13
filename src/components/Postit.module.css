@@ -6,12 +6,13 @@
 }
 
 .postit {
-  padding: 1rem;
-  margin: 1rem;
-  font-size: 1.5rem;
-  width: 150px;
-  height: 150px;
-  margin: 5px;
+  padding: 0.3em;
+  margin: 2px;
+  font-size: 1.5vh;
+  /* ~10 rows in 90vh board => 9vh per postit for 100+ fit */
+  width: 9vh;
+  height: 9vh;
+  box-sizing: border-box;
   text-align: center;
   transform: rotate(var(--rotation));
   background-color: var(--color);
@@ -26,7 +27,7 @@
 }
 
 .postit h3 {
-  font-size: 24px;
+  font-size: 1.8vh;
   font-family: var(--main-font);
   text-align: center;
   margin: 0.5rem 0;
@@ -36,7 +37,6 @@
 .postit p {
   font-family: var(--handwriting-font);
   text-align: center;
-  font-size: 20px;
+  font-size: 1.2vh;
   margin: 0;
 }
-
